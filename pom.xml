@@ -7,6 +7,22 @@
   <version>1.0.0</version>
   <name>salesorderapp</name>
   <url>http://maven.apache.org</url>
+  
+  <pluginRepositories>
+    <pluginRepository>
+        <id>apache.snapshots</id>
+        <name>Apache Snapshots</name>
+        <url>http://repository.apache.org/content/groups/snapshots-group/</url>
+        <releases>
+            <enabled>false</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </pluginRepository>
+</pluginRepositories>
+  
+  
   <repositories>
     <repository>
       <id>JBoss repository</id>
@@ -25,7 +41,7 @@
     <layout>default</layout>
 </repository>
 </repositories>
-	
+	<!-- tomcat to configure according to the env -->
 	<build>
     <plugins>
 	<plugin>
@@ -79,6 +95,13 @@
 		<artifactId>hibernate-commons-annotations</artifactId>
 		<version>4.0.5.Final</version>
 	</dependency>
+	<!-- mysql connector -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.6</version>
+	</dependency>
+	
 	<!-- jersey -->
 	
 	<dependency>

@@ -16,11 +16,12 @@ public class CustomerHelper {
 	public Customer intializeCustomerEntityBean(String cust) {
 		Gson gs = new Gson();
 		Customer customer = new Customer();
+		if(cust !=null){
 		customer = gs.fromJson(cust, Customer.class);
 		
 		System.out.println(customer);
 		
-		
+		}
 		
 		return customer;
 	}
