@@ -26,6 +26,7 @@ public class CustomerHelper {
 	public String intializeCustomerEntityBean(String cust) {
 		Gson gs = new Gson();
 		Customer customer = new Customer();
+<<<<<<< HEAD
 		/*JSONObject json =  new JSONObject(cust);
 		if("".equals(json.get("creditLimit"))){
 			json.put("creditLimit", BigDecimal.ZERO);
@@ -76,13 +77,22 @@ public class CustomerHelper {
 				}
 
 		    });
+=======
+		if(cust !=null){
+>>>>>>> origin/master
 		customer = gs.fromJson(cust, Customer.class);
 		
 		System.out.println(customer);
 		
+<<<<<<< HEAD
 		String custFromDB = gs.toJson(customer);
 		
 		return custFromDB;
+=======
+		}
+		
+		return customer;
+>>>>>>> origin/master
 	}
 	
 }
