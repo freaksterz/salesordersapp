@@ -25,17 +25,17 @@ public class Customer implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * 
+	 * 	
 	 */
 	//private static final long serialVersionUID = 4720496769878541698L;
-	private String custCode;
-	private String custName;
-	private String adress;
-	private String phone1;
-	private String phone2;
-	private BigDecimal creditLimit;
-	private BigDecimal currentLimit;
-	private Set<SalesOrder> saleOrders = new HashSet<SalesOrder>(0);
+		private String custCode = null;
+		private String custName = null;
+		private String adress = null;
+		private String phone1 = null;
+		private String phone2 = null;
+		private BigDecimal creditLimit = BigDecimal.ZERO;
+		private BigDecimal currentLimit= BigDecimal.ZERO;
+	private transient Set<SalesOrder> saleOrders = new HashSet<SalesOrder>(0);
 
 	public Customer() {
 	}

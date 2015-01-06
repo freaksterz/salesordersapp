@@ -8,12 +8,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
-import com.salesorderapp.hibernate.entity.Customer;
-
-
-
-
-
 /**
  * @author freakster
  *
@@ -26,9 +20,10 @@ public class CustomerFeedServices {
 	@Produces("application/json")
     public String createCustomer(String cust) {
 		CustomerHelper ch = new CustomerHelper();
-		Customer customer = ch.intializeCustomerEntityBean(cust);
+		String customer = (String) ch.intializeCustomerEntityBean(cust);
+		
     	//System.out.println(customer);
-		return null;
+		return customer;
     }
 
 }

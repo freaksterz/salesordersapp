@@ -11,10 +11,11 @@ import java.util.List;
 
 
 
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import com.salesorderapp.hibernate.util.HibernateUtil;
+import com.salesorderapp.common.util.HibernateUtil;
 
 /**
  * @author freakster
