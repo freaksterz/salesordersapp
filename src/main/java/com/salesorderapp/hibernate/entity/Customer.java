@@ -3,7 +3,6 @@ package com.salesorderapp.hibernate.entity;
 
 // created 28 Dec, 2014 
 
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -33,15 +32,15 @@ public class Customer implements java.io.Serializable {
 		private String adress = null;
 		private String phone1 = null;
 		private String phone2 = null;
-		private BigDecimal creditLimit = BigDecimal.ZERO;
-		private BigDecimal currentLimit= BigDecimal.ZERO;
+		private double creditLimit;
+		private double currentLimit;
 	private transient Set<SalesOrder> saleOrders = new HashSet<SalesOrder>(0);
 
 	public Customer() {
 	}
 
 	public Customer(String custCode, String custName, String phone1,
-			BigDecimal creditLimit, BigDecimal currentLimit) {
+			double creditLimit, double currentLimit) {
 		this.custCode = custCode;
 		this.custName = custName;
 		this.phone1 = phone1;
@@ -50,8 +49,8 @@ public class Customer implements java.io.Serializable {
 	}
 
 	public Customer(String custCode, String custName, String adress,
-			String phone1, String phone2, BigDecimal creditLimit,
-			BigDecimal currentLimit, Set<SalesOrder> saleOrders) {
+			String phone1, String phone2, double creditLimit,
+			double currentLimit, Set<SalesOrder> saleOrders) {
 		this.custCode = custCode;
 		this.custName = custName;
 		this.adress = adress;
@@ -109,20 +108,20 @@ public class Customer implements java.io.Serializable {
 	}
 
 	@Column(name = "Credit_Limit", nullable = false, precision = 10)
-	public BigDecimal getCreditLimit() {
+	public double getCreditLimit() {
 		return this.creditLimit;
 	}
 
-	public void setCreditLimit(BigDecimal creditLimit) {
+	public void setCreditLimit(double creditLimit) {
 		this.creditLimit = creditLimit;
 	}
 
 	@Column(name = "Current_Limit", nullable = false, precision = 10)
-	public BigDecimal getCurrentLimit() {
+	public double getCurrentLimit() {
 		return this.currentLimit;
 	}
 
-	public void setCurrentLimit(BigDecimal currentLimit) {
+	public void setCurrentLimit(double currentLimit) {
 		this.currentLimit = currentLimit;
 	}
 
