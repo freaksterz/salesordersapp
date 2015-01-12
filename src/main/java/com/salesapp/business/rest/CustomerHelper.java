@@ -3,17 +3,14 @@
  */
 package com.salesapp.business.rest;
 
+
 import java.io.IOException;
-import java.math.BigDecimal;
 
-import org.json.JSONObject;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.TypeAdapter;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
+import com.salesorderapp.hibernate.dao.CustomerDAOImpl;
 import com.salesorderapp.hibernate.entity.Customer;
 
 /**
@@ -22,77 +19,62 @@ import com.salesorderapp.hibernate.entity.Customer;
  */
 public class CustomerHelper {
 
+	String custFromDB = null;
 	
 	public String intializeCustomerEntityBean(String cust) {
-		Gson gs = new Gson();
-		Customer customer = new Customer();
-<<<<<<< HEAD
-		/*JSONObject json =  new JSONObject(cust);
-		if("".equals(json.get("creditLimit"))){
-			json.put("creditLimit", BigDecimal.ZERO);
-		}
-		if("".equals(json.get("currentLimit"))){
-			json.put("creditLimit", BigDecimal.ZERO);
-		}*/
+		// start of jackson example
+		Customer customer = null;
+		ObjectMapper mapper = new ObjectMapper();
+		 customer = getCustomerFromJson(cust, customer, mapper);
 		
-		
-		  GsonBuilder gb = new GsonBuilder();
-		    gb.registerTypeAdapter(BigDecimal.class, new TypeAdapter<BigDecimal>() {
-
-		        @Override
-		        public BigDecimal read(JsonReader reader) throws IOException {
-		            if (reader.peek() == JsonToken.NULL) {
-		                reader.nextNull();
-		                return null;
-		            }
-		            	String stringValue = reader.nextString();
-		            try {
-		            	 String filterString = stringValue.replaceAll(",","");
-		            	 BigDecimal value = new BigDecimal(filterString);
-		            	//BigDecimal value = BigDecimal.valueOf(stringValue);
-		                return value;
-		            } catch (NumberFormatException e) {
-		                return BigDecimal.ZERO;
-		            }
-		        }
-
-		       /* @Override
-		        public void write(JsonWriter writer,  value) throws IOException {
-		            if (value == null) {
-		                writer.nullValue();
-		                return;
-		            }
-		            writer.value(value);
-		        }*/
-
-				@Override
-				public void write(JsonWriter out, BigDecimal value)
-						throws IOException {
-					if (value == null) {
-		                out.nullValue();
-		                return;
-		            }
-		            out.value(value);
-					
-				}
-
-		    });
-=======
-		if(cust !=null){
->>>>>>> origin/master
-		customer = gs.fromJson(cust, Customer.class);
-		
+		 CustomerDAOImpl daoImpl = new CustomerDAOImpl();
+		 daoImpl.addCustomer(customer);
+		 
 		System.out.println(customer);
 		
-<<<<<<< HEAD
-		String custFromDB = gs.toJson(customer);
+		String json =null;
 		
-		return custFromDB;
-=======
-		}
-		
+	      try
+	      {
+	    	  json = mapper.writeValueAsString(customer);
+	      } catch (JsonGenerationException e)
+	      {
+	         e.printStackTrace();
+	      } catch (JsonMappingException e)
+	      {
+	         e.printStackTrace();
+	      } catch (IOException e)
+	      {
+	         e.printStackTrace();
+	      }
+		 
+	      System.out.println(json);
+	      return json;
+
+	}
+
+	/**
+	 * @param cust
+	 * @param customer
+	 * @param mapper
+	 * @return
+	 */
+	private Customer getCustomerFromJson(String cust, Customer customer,
+			ObjectMapper mapper) {
+		try
+	      {
+	        customer = mapper.readValue(cust, Customer.class);
+	      } catch (JsonGenerationException e)
+	      {
+	         e.printStackTrace();
+	      } catch (JsonMappingException e)
+	      {
+	         e.printStackTrace();
+	      } catch (IOException e)
+	      {
+	         e.printStackTrace();
+	      }
 		return customer;
->>>>>>> origin/master
 	}
 	
 }

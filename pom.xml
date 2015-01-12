@@ -95,12 +95,7 @@
 		<artifactId>hibernate-commons-annotations</artifactId>
 		<version>4.0.5.Final</version>
 	</dependency>
-	<!-- mysql connector -->
-	<dependency>
-		<groupId>mysql</groupId>
-		<artifactId>mysql-connector-java</artifactId>
-		<version>5.1.6</version>
-	</dependency>
+	
 	
 	<!-- jersey -->
 	
@@ -131,11 +126,6 @@
     	<version>2.3.1</version>
 	</dependency>
 	
-	<dependency>
-		<groupId>org.codehaus.jackson</groupId>
-		<artifactId>jackson-mapper-asl</artifactId>
-		<version>1.9.13</version>
-	</dependency>
 	
        <!--  <dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
@@ -191,6 +181,20 @@
 		<artifactId>javassist</artifactId>
 		<version>3.18.1-GA</version>
 	</dependency>  
+  
+  <!-- jackson -->
+  <dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-mapper-asl</artifactId>
+		<version>1.9.13</version>
+	</dependency>
+  <dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-core-asl</artifactId>
+		<version>1.9.13</version>
+  </dependency>
+  
+  
   </dependencies>
   
 </project>
