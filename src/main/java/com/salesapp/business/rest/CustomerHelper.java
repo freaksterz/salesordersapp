@@ -32,6 +32,16 @@ public class CustomerHelper {
 		 
 		System.out.println(customer);
 		
+		return getJSONCustomer(customer, mapper);
+
+	}
+
+	/**
+	 * @param customer
+	 * @param mapper
+	 * @return
+	 */
+	private String getJSONCustomer(Customer customer, ObjectMapper mapper) {
 		String json =null;
 		
 	      try
@@ -50,7 +60,6 @@ public class CustomerHelper {
 		 
 	      System.out.println(json);
 	      return json;
-
 	}
 
 	/**

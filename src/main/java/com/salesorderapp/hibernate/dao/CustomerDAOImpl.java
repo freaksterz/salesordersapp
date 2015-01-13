@@ -6,10 +6,11 @@ package com.salesorderapp.hibernate.dao;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 import com.salesorderapp.common.util.HibernateUtil;
 import com.salesorderapp.hibernate.entity.Customer;
+import com.salesorderapp.hibernate.dao.CustomerDAO;;
 
 /**
  * @author freakster
@@ -19,18 +20,23 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 	public Customer addCustomer(Customer customer) {
 		
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		/*Session session = HibernateUtil.getSessionFactory().openSession();
 		  
         session.beginTransaction();
         
         session.save(customer);
         
         session.getTransaction().commit();
-        
-        
+        */
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction transaction = session.beginTransaction();
+		session.save(customer);
+		transaction.commit();
+		session.close();
+		
+	
 		
 		return customer;
-		// TODO Auto-generated method stub
 		
 	}
 
