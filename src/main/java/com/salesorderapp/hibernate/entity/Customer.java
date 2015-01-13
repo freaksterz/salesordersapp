@@ -12,7 +12,7 @@ import javax.persistence.Table;
  * @author freakster
  */
 @Entity
-@Table(name = "Customer", catalog = "salesorderapp")
+@Table(name = "Customer", catalog = "salesorderschema")
 public class Customer implements java.io.Serializable {
 
 	/**
@@ -30,7 +30,7 @@ public class Customer implements java.io.Serializable {
 		private String phone2 = null;
 		private BigDecimal creditLimit;
 		private BigDecimal currentLimit;
-	//private transient Set<SalesOrder> saleOrders = new HashSet<SalesOrder>(0);
+		//private transient Set<SalesOrder> saleOrders = new HashSet<SalesOrder>(0);
 
 	public Customer() {
 	}
@@ -103,7 +103,7 @@ public class Customer implements java.io.Serializable {
 		this.phone2 = phone2;
 	}
 
-	@Column(name = "Credit_Limit", precision = 10)
+	@Column(name = "Credit_Limit" )
 	public BigDecimal getCreditLimit() {
 		return this.creditLimit;
 	}
@@ -117,7 +117,7 @@ public class Customer implements java.io.Serializable {
 		
 	}
 
-	@Column(name = "Current_Limit", precision = 10)
+	@Column(name = "Current_Limit")
 	public BigDecimal getCurrentLimit() {
 		return this.currentLimit;
 	}

@@ -14,7 +14,7 @@ import javax.persistence.Table;
  * @author freakster
  */
 @Entity
-@Table(name = "Student", catalog = "salesorderapp")
+@Table(name = "Student", catalog = "salesorderschema")
 public class Student implements java.io.Serializable {
 
 	private Integer idStudent;

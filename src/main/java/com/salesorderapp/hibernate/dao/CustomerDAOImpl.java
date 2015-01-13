@@ -5,6 +5,7 @@ package com.salesorderapp.hibernate.dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -28,11 +29,17 @@ public class CustomerDAOImpl implements CustomerDAO{
         
         session.getTransaction().commit();
         */
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Session session = null;
+		try{
+			session = HibernateUtil.getSessionFactory().getCurrentSession();	
+		}catch (HibernateException he){
+			session = HibernateUtil.getSessionFactory().openSession();
+		}
+		
 		Transaction transaction = session.beginTransaction();
 		session.save(customer);
 		transaction.commit();
-		session.close();
+		//session.close();
 		
 	
 		

@@ -19,7 +19,7 @@ import javax.persistence.Table;
  * @author freakster
  */
 @Entity
-@Table(name = "SaleOrder", catalog = "salesorderapp")
+@Table(name = "SaleOrder", catalog = "salesorderschema")
 public class SalesOrder implements java.io.Serializable {
 
 	private String orderNumber;
