@@ -22,7 +22,7 @@ public class CustomerHelper {
 	String custFromDB = null;
 	
 	public String intializeCustomerEntityBean(String cust) {
-		// start of jackson example
+	
 		Customer customer = null;
 		ObjectMapper mapper = new ObjectMapper();
 		 customer = getCustomerFromJson(cust, customer, mapper);
@@ -47,14 +47,11 @@ public class CustomerHelper {
 	      try
 	      {
 	    	  json = mapper.writeValueAsString(customer);
-	      } catch (JsonGenerationException e)
-	      {
+	      } catch (JsonGenerationException e){
 	         e.printStackTrace();
-	      } catch (JsonMappingException e)
-	      {
+	      } catch (JsonMappingException e ){
 	         e.printStackTrace();
-	      } catch (IOException e)
-	      {
+	      } catch (IOException e) {
 	         e.printStackTrace();
 	      }
 		 
@@ -73,17 +70,22 @@ public class CustomerHelper {
 		try
 	      {
 	        customer = mapper.readValue(cust, Customer.class);
-	      } catch (JsonGenerationException e)
-	      {
+	      } catch (JsonGenerationException e) {
 	         e.printStackTrace();
-	      } catch (JsonMappingException e)
-	      {
+	      } catch (JsonMappingException e) {
 	         e.printStackTrace();
-	      } catch (IOException e)
-	      {
+	      } catch (IOException e) {
 	         e.printStackTrace();
 	      }
 		return customer;
+	}
+
+	public String getCustomerDetails(String cust_code) {
+		CustomerDAOImpl daoImpl = new CustomerDAOImpl();
+		ObjectMapper mapper = new ObjectMapper();
+		Customer customer = daoImpl.getCustomerDetails(cust_code);
+		String customerJSON = getJSONCustomer(customer, mapper);
+		return customerJSON;
 	}
 	
 }
