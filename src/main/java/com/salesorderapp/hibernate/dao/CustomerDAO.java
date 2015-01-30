@@ -17,10 +17,10 @@ public interface CustomerDAO{
 	Customer addCustomer(Customer customer);
 	void removeCustomer(String custCode);
 	void updateCustomer(Customer customer);
-	void getCustomerDetails(String custCode);
+	Customer getCustomerDetails(String custCode);
 	float getCreditLimit(String custCode);
 	float getCurrentCredit(String custCode);
-	//List<Customer> getAllCustomerList(Customer customer);
+	List<Customer> getAllCustomerList();
 	
 	
 	
