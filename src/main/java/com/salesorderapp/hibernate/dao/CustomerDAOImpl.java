@@ -29,12 +29,7 @@ public class CustomerDAOImpl implements CustomerDAO{
         
         session.getTransaction().commit();
         */
-		Session session = null;
-		try{
-			session = HibernateUtil.getSessionFactory().getCurrentSession();	
-		}catch (HibernateException he){
-			session = HibernateUtil.getSessionFactory().openSession();
-		}
+		Session session = getSession();
 		
 		Transaction transaction = session.beginTransaction();
 		session.save(customer);
@@ -47,6 +42,20 @@ public class CustomerDAOImpl implements CustomerDAO{
 		
 	}
 
+	/**
+	 * @return Sesssion
+	 * @
+	 */
+	private Session getSession() {
+		Session session = null;
+		try{
+			session = HibernateUtil.getSessionFactory().getCurrentSession();	
+		}catch (HibernateException he){
+			session = HibernateUtil.getSessionFactory().openSession();
+		}
+		return session;
+	}
+
 	public void removeCustomer(String custCode) {
 		// TODO Auto-generated method stub
 		
@@ -57,9 +66,12 @@ public class CustomerDAOImpl implements CustomerDAO{
 		
 	}
 
-	public void getCustomerDetails(String custCode) {
-		// TODO Auto-generated method stub
+	public Customer getCustomerDetails(String custCode) {
 		
+		Session session = getSession();
+		session.beginTransaction();
+		Customer customer = (Customer) session.get(Customer.class, custCode);
+		return customer;
 	}
 
 	public float getCreditLimit(String custCode) {
@@ -72,9 +84,12 @@ public class CustomerDAOImpl implements CustomerDAO{
 		return 0;
 	}
 
-	public List<Customer> getAllCustomerList(Customer customer) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Customer> getAllCustomerList() {
+		Session session = getSession();
+		List<Customer> customerList = (List<Customer>) session.createQuery("from Customer").list();
+		return customerList;
 	}
+
+	
 
 }
