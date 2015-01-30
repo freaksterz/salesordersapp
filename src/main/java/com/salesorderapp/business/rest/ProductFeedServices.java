@@ -20,9 +20,9 @@ public class ProductFeedServices {
 	@Produces("application/json")
     public String createCustomer(String prod) {
 		//TODO implment business helper class
-    	System.out.println(prod);
-		return prod;
+		ProductHelper ch = new ProductHelper();
+		String product = (String) ch.intializeProductEntityBean(prod);
+		System.out.println(product);
+		return product;
     }
-	
-	
 }

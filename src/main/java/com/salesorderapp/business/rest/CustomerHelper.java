@@ -6,6 +6,7 @@ package com.salesorderapp.business.rest;
 
 import java.io.IOException;
 
+import com.salesorderapp.common.util.JSONConverter;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -23,68 +24,21 @@ public class CustomerHelper {
 	
 	public String intializeCustomerEntityBean(String cust) {
 	
-		Customer customer = null;
-		ObjectMapper mapper = new ObjectMapper();
-		 customer = getCustomerFromJson(cust, customer, mapper);
-		
-		 CustomerDAOImpl daoImpl = new CustomerDAOImpl();
-		 daoImpl.addCustomer(customer);
-		 
+		//Customer customer = new Customer();
+		Customer customer = new Customer();
+		customer = (Customer) JSONConverter.getEntityObjectFromJSon(cust, customer);
+		CustomerDAOImpl daoImpl = new CustomerDAOImpl();
+		daoImpl.addCustomer(customer);
 		System.out.println(customer);
-		
-		return getJSONCustomer(customer, mapper);
+		return JSONConverter.getJSONFromEntity(customer);
 
-	}
-
-	/**
-	 * @param customer
-	 * @param mapper
-	 * @return
-	 */
-	private String getJSONCustomer(Customer customer, ObjectMapper mapper) {
-		String json =null;
-		
-	      try
-	      {
-	    	  json = mapper.writeValueAsString(customer);
-	      } catch (JsonGenerationException e){
-	         e.printStackTrace();
-	      } catch (JsonMappingException e ){
-	         e.printStackTrace();
-	      } catch (IOException e) {
-	         e.printStackTrace();
-	      }
-		 
-	      System.out.println(json);
-	      return json;
-	}
-
-	/**
-	 * @param cust
-	 * @param customer
-	 * @param mapper
-	 * @return
-	 */
-	private Customer getCustomerFromJson(String cust, Customer customer,
-			ObjectMapper mapper) {
-		try
-	      {
-	        customer = mapper.readValue(cust, Customer.class);
-	      } catch (JsonGenerationException e) {
-	         e.printStackTrace();
-	      } catch (JsonMappingException e) {
-	         e.printStackTrace();
-	      } catch (IOException e) {
-	         e.printStackTrace();
-	      }
-		return customer;
 	}
 
 	public String getCustomerDetails(String cust_code) {
 		CustomerDAOImpl daoImpl = new CustomerDAOImpl();
 		ObjectMapper mapper = new ObjectMapper();
 		Customer customer = daoImpl.getCustomerDetails(cust_code);
-		String customerJSON = getJSONCustomer(customer, mapper);
+		String customerJSON = JSONConverter.getJSONFromEntity(customer);
 		return customerJSON;
 	}
 	
