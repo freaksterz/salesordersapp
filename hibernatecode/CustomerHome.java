@@ -1,11 +1,12 @@
 // default package
 // Generated 28 Dec, 2014 2:51:29 PM by Hibernate Tools 4.0.0
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  * Home object for domain model class Customer.

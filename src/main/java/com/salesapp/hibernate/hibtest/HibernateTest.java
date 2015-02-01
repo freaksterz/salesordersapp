@@ -3,19 +3,9 @@
  */
 package com.salesapp.hibernate.hibtest;
 
-import java.util.List;
-
-
-
-
-
-
-
-
+import com.salesorderapp.common.util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
-
-import com.salesorderapp.common.util.HibernateUtil;
 
 /**
  * @author freakster

@@ -1,12 +1,12 @@
 package com.salesorderapp.hibernate.entity;
 // created 28 Dec, 2014 
 
-import java.math.BigDecimal;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.math.BigDecimal;
+import java.util.Set;
 
 /**
  * @author freakster

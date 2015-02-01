@@ -1,7 +1,8 @@
 package com.salesorderapp.hibernate.dao;
 
-import java.util.List;
 import com.salesorderapp.hibernate.entity.Customer;
+
+import java.util.List;
 
 
 

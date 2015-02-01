@@ -3,9 +3,9 @@
  */
 package com.salesorderapp.hibernate.dao;
 
-import java.util.List;
-
 import com.salesorderapp.hibernate.entity.SalesOrder;
+
+import java.util.List;
 
 /**
  * @author freakster

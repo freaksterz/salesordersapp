@@ -1,12 +1,9 @@
 // default package
 // Generated 28 Dec, 2014 2:51:29 PM by Hibernate Tools 4.0.0
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
+
 import static javax.persistence.GenerationType.IDENTITY;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  * @author freakster

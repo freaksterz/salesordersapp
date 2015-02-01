@@ -3,6 +3,10 @@
  */
 package com.salesorderapp.business.rest;
 
+import com.salesorderapp.hibernate.dao.CustomerDAOImpl;
+import com.salesorderapp.hibernate.entity.Customer;
+import org.codehaus.jackson.map.ObjectMapper;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -12,9 +16,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriInfo;
-import org.codehaus.jackson.map.ObjectMapper;
-import com.salesorderapp.hibernate.dao.CustomerDAOImpl;
-import com.salesorderapp.hibernate.entity.Customer;
 
 /**
  * @author freakster

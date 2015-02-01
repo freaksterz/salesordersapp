@@ -1,13 +1,22 @@
 package com.salesorderapp.hibernate.dao;
 
-import java.util.List;
-
+import com.salesorderapp.common.util.HibernateUtil;
 import com.salesorderapp.hibernate.entity.Product;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import java.util.List;
 
 public class ProductDAOImpl implements ProductDAO{
 
-	public void addProduct(Product product) {
-		// TODO Auto-generated method stub
+	public Product addProduct(Product product) {
+        Session session = HibernateUtil.getSession();
+
+        Transaction transaction = session.beginTransaction();
+        session.save(product);
+        transaction.commit();
+
+        return product;
 		
 	}
 

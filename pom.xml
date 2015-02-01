@@ -52,8 +52,16 @@
 			<url>http://localhost:8080/manager/text</url>
 			<server>TomcatServer</server>
 			<path>/salesorderapp</path>
-		</configuration>
+        </configuration>
 	</plugin>
+        <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.2</version>
+            <configuration>
+                <source>1.7</source>
+                <target>1.7</target>
+            </configuration>
+        </plugin>
     </plugins>
     </build>
 

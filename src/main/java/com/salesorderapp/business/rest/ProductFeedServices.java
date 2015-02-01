@@ -18,10 +18,10 @@ public class ProductFeedServices {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-    public String createCustomer(String prod) {
-		//TODO implment business helper class
-		ProductHelper ch = new ProductHelper();
-		String product = (String) ch.intializeProductEntityBean(prod);
+    public String createProduct(String prod) {
+
+		ProductHelper productHelper = new ProductHelper();
+		String product = (String) productHelper.intializeSaveProductEntityBean(prod);
 		System.out.println(product);
 		return product;
     }

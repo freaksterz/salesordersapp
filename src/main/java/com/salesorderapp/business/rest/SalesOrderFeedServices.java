@@ -16,7 +16,7 @@ public class SalesOrderFeedServices {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-    public String createCustomer(String prod) {
+    public String createSaleOrder(String prod) {
 		//TODO implment business helper class
     	System.out.println(prod);
 		return prod;

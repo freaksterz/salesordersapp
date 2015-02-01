@@ -3,17 +3,10 @@ package com.salesorderapp.hibernate.entity;
 
 // Created 28 Dec 2014 
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
  * @author freakster
@@ -26,7 +19,7 @@ public class SalesOrder implements java.io.Serializable {
 	private Customer customer;
 	private BigDecimal totalPrice;
 	private int orderNo;
-	private Set<OrderLines> orderLineses = new HashSet<OrderLines>(0);
+	private Set<OrderLines> orderLineses = new HashSet<OrderLines>();
 
 	public SalesOrder() {
 	}

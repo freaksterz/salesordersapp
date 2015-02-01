@@ -4,15 +4,10 @@
 package com.salesorderapp.business.rest;
 
 
-import java.io.IOException;
-
 import com.salesorderapp.common.util.JSONConverter;
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
-
 import com.salesorderapp.hibernate.dao.CustomerDAOImpl;
 import com.salesorderapp.hibernate.entity.Customer;
+import org.codehaus.jackson.map.ObjectMapper;
 
 /**
  * @author freakster

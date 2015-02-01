@@ -3,9 +3,9 @@
  */
 package com.salesorderapp.hibernate.dao;
 
-import java.util.List;
-
 import com.salesorderapp.hibernate.entity.Product;
+
+import java.util.List;
 
 /**
  * @author freakster
@@ -14,7 +14,7 @@ import com.salesorderapp.hibernate.entity.Product;
 public interface ProductDAO {
    //TODO define custom Exception handling for the below methods
    //TODO implement generic DAO 
-	void addProduct(Product product) ;
+	Product addProduct(Product product) ;
 	void removeProduct(String prodCode);
 	void updateProduct(Product product);
 	Product getProdcutDetail(String prodCode);

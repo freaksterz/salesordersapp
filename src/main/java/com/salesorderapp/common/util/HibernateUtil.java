@@ -3,9 +3,10 @@
  */
 package com.salesorderapp.common.util;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
@@ -46,4 +47,18 @@ public class HibernateUtil {
 	   {
 	      getSessionFactory().close();
 	   }
+
+    /**
+     * @return Sesssion
+     * @
+     */
+        public static Session getSession() {
+        Session session = null;
+        try{
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+        }catch (HibernateException he){
+            session = HibernateUtil.getSessionFactory().openSession();
+        }
+        return session;
+    }
 }
