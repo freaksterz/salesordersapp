@@ -35,7 +35,7 @@ public class JSONConverter {
         ObjectMapper mapper = new ObjectMapper();
         try
         {
-            json = mapper.writeValueAsString((Customer)entityReference);
+            json = mapper.writeValueAsString(entityReference);
         } catch (JsonGenerationException e){
             e.printStackTrace();
         } catch (JsonMappingException e ){
