@@ -16,11 +16,12 @@ public class SalesOrderFeedServices {
 	@POST
 	@Consumes("application/json")
 	@Produces("application/json")
-    public String createSaleOrder(String prod) {
-		//TODO implment business helper class
-    	System.out.println(prod);
-		return prod;
+    public String createSaleOrder(String saleOrder) {
+        SaleOrderHelper saleOrderHelper = new SaleOrderHelper();
+        String customer = (String) saleOrderHelper.intializeCustomerEntityBean(saleOrder);
+
+        //System.out.println(customer);
+        return customer;
+
     }
-	
-	
 }

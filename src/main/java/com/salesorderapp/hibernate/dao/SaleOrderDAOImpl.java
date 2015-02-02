@@ -3,7 +3,10 @@
  */
 package com.salesorderapp.hibernate.dao;
 
+import com.salesorderapp.common.util.HibernateUtil;
 import com.salesorderapp.hibernate.entity.SalesOrder;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -13,8 +16,13 @@ import java.util.List;
  */
 public class SaleOrderDAOImpl implements SaleOrderDAO{
 
-	public void addSaleOrder(SalesOrder SaleOrder) {
-		// TODO Auto-generated method stub
+	public SalesOrder addSaleOrder(SalesOrder saleOrder) {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(saleOrder);
+        transaction.commit();
+
+        return saleOrder;
 		
 	}
 

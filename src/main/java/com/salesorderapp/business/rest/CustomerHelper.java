@@ -9,6 +9,8 @@ import com.salesorderapp.hibernate.dao.CustomerDAOImpl;
 import com.salesorderapp.hibernate.entity.Customer;
 import org.codehaus.jackson.map.ObjectMapper;
 
+import java.util.List;
+
 /**
  * @author freakster
  *
@@ -31,10 +33,18 @@ public class CustomerHelper {
 
 	public String getCustomerDetails(String cust_code) {
 		CustomerDAOImpl daoImpl = new CustomerDAOImpl();
-		ObjectMapper mapper = new ObjectMapper();
+		//ObjectMapper mapper = new ObjectMapper();
 		Customer customer = daoImpl.getCustomerDetails(cust_code);
 		String customerJSON = JSONConverter.getJSONFromEntity(customer);
 		return customerJSON;
 	}
-	
+
+    public String getCustomerDetails() {
+        CustomerDAOImpl dao = new CustomerDAOImpl();
+        //ObjectMapper mapper = new ObjectMapper();
+        List<Customer> customerList = dao.getAllCustomerList();
+        String listCustomerJSON  = JSONConverter.getJSONFromEntity(customerList);
+        return listCustomerJSON;
+
+    }
 }

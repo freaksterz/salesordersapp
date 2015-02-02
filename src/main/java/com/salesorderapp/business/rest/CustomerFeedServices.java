@@ -34,4 +34,14 @@ public class CustomerFeedServices {
 		return customer;
 		
 	}
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getCustomers() {
+
+        CustomerHelper ch = new CustomerHelper();
+        String listOfCustomers = (String) ch.getCustomerDetails();
+        return listOfCustomers;
+
+    }
+
 }

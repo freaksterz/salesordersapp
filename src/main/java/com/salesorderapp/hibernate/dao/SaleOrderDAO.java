@@ -16,7 +16,7 @@ public interface SaleOrderDAO {
 	//TODO define custom Exception handling for the below methods
 	//TODO implement generic DAO 
 	    
-		void addSaleOrder(SalesOrder SaleOrder);
+		SalesOrder addSaleOrder(SalesOrder SaleOrder);
 		void removeSaleOrder(String oderNumber);
 		void updateSaleOrder(SalesOrder SaleOrder);
 		void getSaleOrderDetails(String oderNumber);
