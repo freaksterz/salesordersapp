@@ -35,12 +35,14 @@ public class CustomerFeedServices {
 		
 	}
     @GET
+	@Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
-    public String getCustomers() {
+    public String getListOfCustomers() {
 
         CustomerHelper ch = new CustomerHelper();
         String listOfCustomers = (String) ch.getCustomerDetails();
-        return listOfCustomers;
+		System.out.println("listOfCustomers = " + listOfCustomers);
+		return listOfCustomers;
 
     }
 

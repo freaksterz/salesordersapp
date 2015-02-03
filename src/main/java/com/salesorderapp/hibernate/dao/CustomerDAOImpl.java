@@ -45,7 +45,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 	public Customer getCustomerDetails(String custCode) {
 		
 		Session session = HibernateUtil.getSession();
-		session.beginTransaction();
+		Transaction tx= session.getTransaction();
 		Customer customer = (Customer) session.get(Customer.class, custCode);
 		return customer;
 	}
@@ -62,7 +62,10 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 	public List<Customer> getAllCustomerList() {
 		Session session = HibernateUtil.getSession();
-		List<Customer> customerList = (List<Customer>) session.createQuery("from Customer").list();
+		//List<Customer> customerList = (List<Customer>) session.createQuery("from Customer").list();
+		//List<Customer> customerList = session.createCriteria(Customer.class).list();
+		//(List<Customer>) customerList = (List<Customer>)session.createSQLQuery("SELECT * FROM Customer").addEntity(Customer.class).list();
+		List<Customer> customerList  = (List<Customer>) session.createQuery("from Products").list();
 		return customerList;
 	}
 
