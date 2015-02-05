@@ -5,7 +5,6 @@ package com.salesorderapp.hibernate.dao;
 
 import com.salesorderapp.common.util.HibernateUtil;
 import com.salesorderapp.hibernate.entity.Customer;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -62,10 +61,14 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 	public List<Customer> getAllCustomerList() {
 		Session session = HibernateUtil.getSession();
+		Transaction tx = session.beginTransaction();
+		List<Customer> customerList = null;
 		//List<Customer> customerList = (List<Customer>) session.createQuery("from Customer").list();
 		//List<Customer> customerList = session.createCriteria(Customer.class).list();
 		//(List<Customer>) customerList = (List<Customer>)session.createSQLQuery("SELECT * FROM Customer").addEntity(Customer.class).list();
-		List<Customer> customerList  = (List<Customer>) session.createQuery("from Products").list();
+		customerList  = (List<Customer>) session.createQuery("from Customer").list();
+		tx.commit();
+
 		return customerList;
 	}
 
