@@ -8,6 +8,7 @@ import com.salesorderapp.common.util.JSONConverter;
 import com.salesorderapp.hibernate.dao.CustomerDAOImpl;
 import com.salesorderapp.hibernate.entity.Customer;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.json.JSONArray;
 
 import java.util.List;
 
@@ -39,12 +40,17 @@ public class CustomerHelper {
 		return customerJSON;
 	}
 
-    public String getCustomerDetails() {
+    public JSONArray getAllCustomerDetails() {
         CustomerDAOImpl dao = new CustomerDAOImpl();
         //ObjectMapper mapper = new ObjectMapper();
         List<Customer> customerList = dao.getAllCustomerList();
-        String listCustomerJSON  = JSONConverter.getJSONFromEntity(customerList);
-        return listCustomerJSON;
+		JSONArray customerJSONArray = new JSONArray(customerList);
+        return customerJSONArray;
 
     }
+
+	public void deleteCustomer(String id) {
+		CustomerDAOImpl dao = new CustomerDAOImpl();
+		dao.removeCustomer(id);
+	}
 }
